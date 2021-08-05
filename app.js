@@ -10,7 +10,10 @@ app.get('/', async (req, res) => {
 
   var temp = data['main']['temp'];
 
-  if(temp<=50){
+  if(temp < 0 || temp > 110){
+    res.send(`The temperature is pretty extreme today! Please be careful. Temperature ${temp}`);
+  }
+  else if(temp<=50){
     res.send(`The temperature is ${temp}, wear a jacket!`);
   }
   else if(temp<=70){
